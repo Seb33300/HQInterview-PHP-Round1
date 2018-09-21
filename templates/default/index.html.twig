@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }} d-block">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+        {{ form_errors(form) }}
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h3>{{ form_label(form.order) }}</h3>
+                {{ form_widget(form.order) }}
+            </div>
+
+            <div class="col-sm-6">
+                <h3>{{ form_label(form.creditCard) }}</h3>
+                {{ form_widget(form.creditCard) }}
+            </div>
+
+        </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}
